@@ -2847,8 +2847,8 @@ arm_exidx_unwind_sniffer (const struct frame_unwind *self,
 	might reject perfectly valid entries that just happen to cover
 	multiple functions; therefore this check ought to be removed
 	once the linker is fixed.  */
-      if (func_start > exidx_region)
-	return 0;
+//      if (func_start > exidx_region)
+//	return 0;
     }
 
   /* Decode the list of unwinding instructions into a prologue cache.
