@@ -44,6 +44,7 @@ SECTION
 #include "elf-bfd.h"
 #include "libiberty.h"
 #include "safe-ctype.h"
+#include <linux/elfcore.h>
 
 #ifdef CORE_HEADER
 #include CORE_HEADER

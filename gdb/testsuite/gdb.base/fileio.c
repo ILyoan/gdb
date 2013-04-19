@@ -381,7 +381,7 @@ test_system ()
   sprintf (sys, "mkdir -p %s %s", TESTSUBDIR, TESTDIR2);
   ret = system (sys);
   if (ret == 127)
-    printf ("system 2: ret = %d /bin/sh unavailable???\n", ret);
+    printf ("system 2: ret = %d /system/bin/sh unavailable???\n", ret);
   else
     printf ("system 2: ret = %d %s\n", ret, ret == 0 ? "OK" : "");
   stop ();

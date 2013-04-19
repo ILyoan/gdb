@@ -40,7 +40,6 @@
 #include "inf-ptrace.h"
 #include "auxv.h"
 #include <sys/param.h>		/* for MAXPATHLEN */
-#include <sys/procfs.h>		/* for elf_gregset etc.  */
 #include "elf-bfd.h"		/* for elfcore_write_* */
 #include "gregset.h"		/* for gregset */
 #include "gdbcore.h"		/* for get_exec_file */
@@ -1776,6 +1775,8 @@ get_pending_status (struct lwp_info *lp, int *status)
     }
   else
     {
+/* from GLIBC */
+#define W_STOPCODE(sig)       ((sig) << 8 | 0x7f)
       *status = W_STOPCODE (gdb_signal_to_host (signo));
 
       if (debug_linux_nat)
@@ -4061,7 +4062,7 @@ linux_nat_kill (struct target_ops *ops)
   if (last.kind == TARGET_WAITKIND_FORKED
       || last.kind == TARGET_WAITKIND_VFORKED)
     {
-      ptrace (PT_KILL, PIDGET (last.value.related_pid), 0, 0);
+      ptrace (PTRACE_KILL, PIDGET (last.value.related_pid), 0, 0);
       wait (&status);
     }
 
@@ -5259,10 +5260,10 @@ lin_thread_get_thread_signals (sigset_t *set)
      fortunately they don't change!  */
 
   if (restart == 0)
-    restart = __SIGRTMIN;
+    restart = SIGRTMIN;
 
   if (cancel == 0)
-    cancel = __SIGRTMIN + 1;
+    cancel = SIGRTMIN + 1;
 
   sigaddset (set, restart);
   sigaddset (set, cancel);

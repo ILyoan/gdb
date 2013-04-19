@@ -308,7 +308,11 @@ static int
 hardwire_drain_output (struct serial *scb)
 {
 #ifdef HAVE_TERMIOS
+#ifdef __BIONIC__
+  return ioctl(scb->fd, TCSBRK, 1);
+#else
   return tcdrain (scb->fd);
+#endif
 #endif
 
 #ifdef HAVE_TERMIO

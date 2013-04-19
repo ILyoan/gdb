@@ -32,10 +32,8 @@
 #include "arm-linux-tdep.h"
 
 #include <elf/common.h>
-#include <sys/user.h>
 #include <sys/ptrace.h>
 #include <sys/utsname.h>
-#include <sys/procfs.h>
 
 /* Prototypes for supply_gregset etc.  */
 #include "gregset.h"
@@ -101,7 +99,7 @@ fetch_fpregister (struct regcache *regcache, int regno)
   tid = GET_THREAD_ID (inferior_ptid);
 
   /* Read the floating point state.  */
-  ret = ptrace (PT_GETFPREGS, tid, 0, fp);
+  ret = ptrace (PTRACE_GETFPREGS, tid, 0, fp);
   if (ret < 0)
     {
       warning (_("Unable to fetch floating point register."));
@@ -131,7 +129,7 @@ fetch_fpregs (struct regcache *regcache)
   tid = GET_THREAD_ID (inferior_ptid);
   
   /* Read the floating point state.  */
-  ret = ptrace (PT_GETFPREGS, tid, 0, fp);
+  ret = ptrace (PTRACE_GETFPREGS, tid, 0, fp);
   if (ret < 0)
     {
       warning (_("Unable to fetch the floating point registers."));
@@ -160,7 +158,7 @@ store_fpregister (const struct regcache *regcache, int regno)
   tid = GET_THREAD_ID (inferior_ptid);
   
   /* Read the floating point state.  */
-  ret = ptrace (PT_GETFPREGS, tid, 0, fp);
+  ret = ptrace (PTRACE_GETFPREGS, tid, 0, fp);
   if (ret < 0)
     {
       warning (_("Unable to fetch the floating point registers."));
@@ -197,7 +195,7 @@ store_fpregs (const struct regcache *regcache)
   tid = GET_THREAD_ID (inferior_ptid);
   
   /* Read the floating point state.  */
-  ret = ptrace (PT_GETFPREGS, tid, 0, fp);
+  ret = ptrace (PTRACE_GETFPREGS, tid, 0, fp);
   if (ret < 0)
     {
       warning (_("Unable to fetch the floating point registers."));

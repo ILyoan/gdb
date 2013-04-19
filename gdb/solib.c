@@ -1505,4 +1505,7 @@ PATH and LD_LIBRARY_PATH."),
 				     reload_shared_libraries,
 				     show_solib_search_path,
 				     &setlist, &showlist);
+
+  /* default solib-search-path */
+  solib_search_path = strdup("/system/lib");
 }

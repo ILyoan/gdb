@@ -2082,7 +2082,7 @@ windows_create_inferior (struct target_ops *ops, char *exec_file,
     {
       sh = getenv ("SHELL");
       if (!sh)
-	sh = "/bin/sh";
+	sh = "/system/bin/sh";
       if (cygwin_conv_path (CCP_POSIX_TO_WIN_W, sh, shell, __PMAX) < 0)
       	error (_("Error starting executable via shell: %d"), errno);
 #ifdef __USEWIDE

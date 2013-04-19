@@ -130,7 +130,7 @@ pipe_open (struct serial *scb, const char *name)
       for (old = pidlist; old; old = old->next)
 	close (fileno (old->fp));	/* Don't allow a flush.  */
 #endif
-      execl ("/bin/sh", "sh", "-c", name, (char *) 0);
+      execl ("/system/bin/sh", "sh", "-c", name, (char *) 0);
       _exit (127);
     }
 

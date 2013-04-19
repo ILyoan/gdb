@@ -28,8 +28,6 @@
 
 #include "gdb_proc_service.h"
 
-#include <sys/procfs.h>
-
 /* Prototypes for supply_gregset etc.  */
 #include "gregset.h"
 

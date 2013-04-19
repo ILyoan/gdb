@@ -739,7 +739,7 @@ shell_escape (char *arg, int from_tty)
       const char *p, *user_shell;
 
       if ((user_shell = (char *) getenv ("SHELL")) == NULL)
-	user_shell = "/bin/sh";
+	user_shell = "/system/bin/sh";
 
       /* Get the name of the shell for arg0.  */
       p = lbasename (user_shell);

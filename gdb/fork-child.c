@@ -37,7 +37,7 @@
 #include <signal.h>
 
 /* This just gets used as a default if we can't find SHELL.  */
-#define SHELL_FILE "/bin/sh"
+#define SHELL_FILE "/system/bin/sh"
 
 extern char **environ;
 
