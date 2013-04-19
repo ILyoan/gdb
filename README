@@ -12,7 +12,9 @@ It is now possible to automatically configure and build a variety of
 tools with one command.  To build all of the tools contained herein,
 run the ``configure'' script here, e.g.:
 
-	./configure 
+	mkdir build
+	cd build
+	../configure 
 	make
 
 To install them (by default in /usr/local/bin, /usr/local/lib, etc),
@@ -35,9 +37,22 @@ also set CC when running make.  For example (assuming sh/bash/ksh):
 A similar example using csh:
 
 	setenv CC gcc
-	./configure
+	../configure
 	make
 
+To configure and build gdb for android host, run the ``configure''
+script here, e.g:
+	
+	mkdir build
+	cd build
+	../configure --host=arm-linux-androideabi 
+	CC=arm-linux-androideabi-gcc 
+	CFLAGS='-g -D__ANDROID__ 
+	        -DHAVE_CURSES_H=1 
+	        -L`pwd`/../ext/ncurses-5.7/lib -lncurses 
+			-I`pwd`/../ext/ncurses-5.7/include'
+	make
+	
 Much of the code and documentation enclosed is copyright by
 the Free Software Foundation, Inc.  See the file COPYING or
 COPYING.LIB in the various directories, for a description of the
