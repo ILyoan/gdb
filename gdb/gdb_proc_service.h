@@ -68,7 +68,7 @@ typedef enum
 } ps_err_e;
 
 #ifndef HAVE_LWPID_T
-typedef unsigned int lwpid_t;
+typedef pid_t lwpid_t;
 #endif
 
 #ifndef HAVE_PSADDR_T
