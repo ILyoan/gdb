@@ -2347,6 +2347,8 @@ arm_exidx_new_objfile (struct objfile *objfile)
 			    break;
 			  }
 		    }
+            // rust libcore do have gnu_personality.
+            gnu_personality = 1;
 
 		  /* If so, the next word contains a word count in the high
 		     byte, followed by the same unwind instructions as the
