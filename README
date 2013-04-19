@@ -50,7 +50,7 @@ script here, e.g:
 	CFLAGS='-g -D__ANDROID__ 
 	        -DHAVE_CURSES_H=1 
 	        -L`pwd`/../ext/ncurses-5.7/lib -lncurses 
-			-I`pwd`/../ext/ncurses-5.7/include'
+		-I`pwd`/../ext/ncurses-5.7/include'
 	make
 	
 Much of the code and documentation enclosed is copyright by
